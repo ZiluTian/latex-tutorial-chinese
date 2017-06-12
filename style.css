@@ -1,0 +1,125 @@
+*{
+	padding:1;
+	margin:1;
+	border:1;
+}
+
+body{
+	background-size:100%;
+	background-color:#fff6d3;
+}
+
+#title{
+	text-align:center;
+}
+
+#container{
+	width:80%;
+	margin: auto;
+	padding:15px;
+}
+
+#section_name{
+	background-color: #ff9900; 
+}
+
+pre {
+	width: 75%;
+	margin: auto;
+	padding: 5px;
+	overflow-y:hidden;
+	overflow-x:scroll;
+}
+
+
+pre.prettyprint {
+	padding: 5px;
+    display: block;
+    background: #333;
+    color: #fff;
+    font-size: medium;
+}
+
+pre span{
+	color:#FFA500;
+}
+
+
+.clearfix:after {
+    display:block;
+    clear:both;
+}
+
+/*----- Menu Outline -----*/
+.menu-wrap {
+    width:100%;
+    background:#3e3436;
+}
+
+.menu {
+    width:80%;
+    margin:0px auto;
+}
+
+.menu li {
+    margin:0px;
+    list-style:none;
+}
+
+.menu a {
+    color:#919191;
+}
+
+.menu li:hover > a, .menu .current-item > a {
+    text-decoration:none;
+    color:#be5b70;
+}
+
+.menu .arrow {
+    font-size:11px;
+    line-height:0%;
+}
+
+/*----- Top Level -----*/
+.menu > ul > li {
+    float:right;
+    display:inline-block;
+    position:relative;
+}
+
+.menu > ul > li > a {
+    padding:10px 40px;
+    display:inline-block;
+}
+
+/*----- Bottom Level -----*/
+.menu li:hover .sub-menu {
+    z-index:1;
+    opacity:1;
+}
+
+.sub-menu {
+	width:160%;
+    padding:5px 0px;
+    position:absolute;
+    top:100%;
+    left:0px;
+    z-index:-1;
+    opacity:0;
+    transition:opacity linear 0.15s;
+}
+
+.sub-menu li {
+    display:block;
+    font-size:16px;
+}
+
+.sub-menu li a {
+    padding:10px 30px;
+    display:block;
+}
+
+#nav_tag{
+	color: #1BE51B;
+	float: right;
+}

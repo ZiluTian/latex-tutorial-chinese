@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title> LaTeX 教程</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script type="text/x-mathjax-config">
+	  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+	</script>
+	<script type="text/javascript" async
+	  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=default">
+	</script>
+</head>
+
+<body>
+
+<div class="menu-wrap">
+    <nav class="menu">
+        <ul class="clearfix">
+            <li><a href="#installation"> 使用方法 </a></li>
+            <li><a href="latex.html"> 教程 <span class="arrow">&#9660;</span></a>
+                <ul class="sub-menu">
+                    <li><a href="#basics">文档基础知识</a></li>
+                    <li><a href="#list_table">列举和表格</a></li>
+                    <li><a href="#equations">符号和公式</a></li>
+                    <li><a href="#pic">插图</a></li>
+                </ul>
+            </li>
+            <li><a href="#site_help"> 声明及反馈 </a></li>
+        </ul>
+    </nav>
+</div>
+<br>
+<div id="container">
+	<h1 align="center"> $\LaTeX$ 教程 </h1>
+	<div id="installation">	<h2> 使用方法</h2>
+	对于这个教程，建议大家自己练习一下，适当地修改例子，看不同的指令产生的影响，在线（推荐）或者离线。
+	<ul>
+	<li> <h2> 在线使用 </h2>
+		在线练习$\LaTeX$十分方便，很多包都已经装好了。 推荐下面两个网站，个人使用是免费的： <br>
+		<ul> 
+		<li> <a href="https://www.overleaf.com" target="_blank"> www.overleaf.com </a> </li>
+		<li> <a href="https://www.sharelatex.com" target="_blank"> www.sharelatex.com </a> </li>
+		</ul>
+	</li>
+
+	<li> <h2> 离线安装和使用 </h2> 
+		如果你想在个人电脑离线时使用，请参考如下安装步骤。 <br>
+		<ul>
+			<li><h3>Windows</h3>
+				下载 <a href="https://miktex.org/Download" target="_blank">MikTex</a> 并完成安装。MikTex有一个自带的editor, TeXworks,可以选择使用个也可以下载别的editor。我个人比较喜欢 <a href="http://www.xm1math.net/texmaker/" target="_blank">TexMaker</a>.
+			</li>
+
+			<li><h3>Mac</h3>
+				下载 <a href="https://miktex.org/Download" target="_blank">MikTex</a> 并完成安装。MikTex有一个自带的editor, TeXworks,可以选择使用个也可以下载别的editor。我个人比较喜欢 <a href="http://www.xm1math.net/texmaker/" target="_blank">TexMaker</a>.
+			</li>
+
+			<li><h3>Ubuntu</h3> 
+				首先安装LaTeX: <br>
+				<code> sodo apt-get install texlive </code> <br>
+				选择一个喜欢的editor （已TexMaker为例）： <br>
+				<code> sudo apt-get install texmaker </code>
+			</li>
+		</ul>
+		首先你会注意到打开editor有很多compile的选项。对于TexMaker, 文件写好保存后对于这个教程里的大多数例子直接点击QuickBuild左边的小箭头就可以了，在右侧会看到生成的pdf文件。有几个例外我会特别注明的。对于TeXworks,这个教程里的所有例子都可以通过default的option，pdfLaTeX+MakeIndex+BibTex，编译并生成pdf文件。 注意文件写好后存的后缀是.tex，建议每一个.tex文件存在单独的文件夹，因为编译过程中会生成多个文件（.log, .aux, .out, .synctex.gz, .toc, etc）。作为初学者不需要了解每一个文件的作用，只需要知道.pdf是生成的最终文件。如果反复build，比如说写一点compile看有没有错然后继续，如果之前没有报错，是不需要删除原先产生的各种文件的，再一次build会自动生成新的文件把原先的覆盖掉。 但如果之前compile有错，更改了.tex文件之后建议把原先的各种文件删除再Build。
+	</li>
+	</ul>
+	</div>
+
+	<hr>
+	<div id="nav_tag"> <a href="#">回到页面顶端 ↑</a></div>
+
+	<div id="basics">
+		<h2> 文档基础知识 </h2>
+		作为第一份 $\LaTeX$ 文件, 我们希望输出 <br>
+		Hello World! <br>
+		通过这个简单的例子，让大家熟悉$\LaTeX$的语法。
+<pre class="prettyprint">
+<span>\documentclass{report}</span>
+<span>\begin{document}</span>
+% This is the first Latex document. More to be added. 
+Hello World! 
+<span>\end{document}</span>
+</pre>
+		
+		<ul>
+			<li>%代表评论，之后同一行的字都不会被输出。 </li>
+			<li>第一行$\text{\documentclass{report}}$表示这份文件的类型是report. 其他的类型还有article, book, letter, IEEEtran等等。同时也可以标示出来一些诸如字体大小的选项，用[]。
+			比如说,  $\text{\documentclass[12pt]{report}}$表示这篇文件的类型是report，正文的字体是12号字。</li>
+
+			<li>$\text{\documentclass{report}}$ 和 $\text{\begin{document}}$ 之间的地方是preamble，用来声明使用哪些包（package），自定义方程，等等。</li>
+			<li>$\text{\begin{document}}$ 标志着正文的开始, 	$\text{\end{document}}$ 则是正文的结束。
+			</li>
+		</ul>
+
+		作为简单的练习，建议读者输入一些被不规律空格分隔开的字母（比如说a 三个空格 b 两个空格 c），输出的结果和你想象的一样么？ <br>
+
+		接下来我们为文件加一些框架。如果你在写文章需要不同的章节，如何在 $\LaTeX$中实现？
+
+<pre class="prettyprint">
+\documentclass{report}
+% preamble 
+\begin{document}
+% This is my first Latex document. More to be added. 
+<span>\section{Section 1}</span>
+This is section 1.  
+<span>\subsection{subsection 1.1}</span>
+This is subsection 1.1. Notice the differences in the font headings. 
+\section{Section 2}
+This is section 2. 
+<span>\section*{Section 3}</span>
+But I don't want my section to be numbered. 
+\end{document}
+</pre>
+		注意到如果不希望章节有编码，可以用$\text{\section*{}}$. 现在我们的文章有内容，有结构，如何增加目录和标题呢？
+
+<pre class="prettyprint">
+\documentclass{report}
+
+\begin{document}
+<span>\title{First Document}
+\author{your name}
+\maketitle
+</span>
+
+% This will generate a table of contents
+<span>\tableofcontents</span>
+\section{Section 1}
+This is section 1.  
+\subsection{subsection 1.1}
+This is subsection 1.1. Notice the differences in the font headings. 
+\section{Section 2}
+This is section 2. 
+\section*{Section 3}
+But I don't want my section to be numbered. 
+\end{document}
+</pre>
+	
+		如果你用离线的软件，刚刚更改完章节的标题后点击 Build，也许你会注意到目录上章节的名字并没有改变。只需要再Build一次就好了。有些读者可能注意到一些文档的目录是可以直接点的，那是怎么做到的呢？通过使用package hyperref, 我们也可以制作有超链接的目录。
+
+<pre class="prettyprint">
+\documentclass{report}
+
+<span>\usepackage{hyperref}</span>
+
+\begin{document}
+\title{First Document}
+\author{your name}
+\maketitle
+% This will generate a table of contents
+\tableofcontents
+\section{Section 1}
+This is section 1.  
+\subsection{subsection 1.1}
+This is subsection 1.1. Notice the differences in the font headings. 
+\section{Section 2}
+This is section 2. 
+\section*{Section 3}
+But I don't want my section to be numbered. 
+\end{document}
+</pre>
+		因为我们的内容太短，你会看到目录和正文在同一页。如果我们要另起一页呢？$\text{\newpage}$.
+
+<pre class="prettyprint">
+\documentclass{report}
+
+\usepackage{hyperref}
+
+\begin{document}
+\title{First Document}
+\author{your name}
+\maketitle
+% This will generate a table of contents
+\tableofcontents
+<span>\newpage </span>
+\section{Section 1}
+This is section 1.  
+\subsection{subsection 1.1}
+This is subsection 1.1. Notice the differences in the font headings. 
+\section{Section 2}
+This is section 2. 
+\section*{Section 3}
+But I don't want my section to be numbered. 
+\end{document}
+</pre>
+		至此，你已经掌握了$\LaTeX$文件的基本要素了。
+	</div>
+
+	<hr>
+	<div id="nav_tag"> <a href="#">回到页面顶端 ↑</a></div>
+
+	<div id="list_table">
+	<h2>列举和表格</h2>
+	在文档中我们常常会用到列举。请在你的编译器里输入下面的例子。
+	<pre class="prettyprint">
+\documentclass{report}
+
+\begin{document}
+<span>\begin{itemize}
+\item Item 1. 
+\item Item 2.
+\item \ldots 
+\item Item n. 
+\end{list}</span>
+\end{document}
+	</pre>
+
+	enumerate是另外一个常用的列举方法，当我们希望列举的项有编码时。 仅需要把上述代码中的itemize换做enumerate就可以了。 List还有很多用途，请参考 <a href="https://en.wikibooks.org/wiki/LaTeX/List_Structures" target="_blank"> list_structures </a>
+	</div>
+	
+<pre class="prettyprint">
+\documentclass{report}
+\begin{document}
+<span>
+\begin{table}
+\caption{The Number of Iterations}
+\centering 
+% Each element in the tabular is left aligned
+\begin{tabular}{l l}
+\hline
+iter1 & iter2	\\
+\hline
+31 & 25	\\
+20 & 17	\\
+45 & 37	\\
+23 & 19	\\
+\hline
+\end{tabular}
+\end{table}
+</span>
+\end{document}
+</pre>
+<ul>
+<li>\caption: 表格的题目 </li>
+<li>\centering: 表格整体要居中 </li>
+<li>\hline: 横线 </li>
+<li> {l l} 表格内的第一和第二列左对齐 </li>
+</ul>
+	<hr>
+	<div id="nav_tag"> <a href="#">回到页面顶端 ↑</a></div>
+
+	<div id="equations">
+	<h2>符号和公式</h2>
+	数学公式, 希腊字母，以及特殊符号都需要在数学环境中使用。如果是在同一行，使用$\text{\$表达式\$}$。 如果是另起一行, 使用$\text{\[表达式\]}$ 或者 $\text{\$\$表达式\$\$}$。 <br>
+	同一行的公式：$\frac{1}{2}(3x+5)$ 还是同一行 <br>
+	另起一行的公式： $$\frac{1}{2}(3x+5)$$
+
+	<ul>
+		<li>
+			<h3>希腊字母</h3>
+			希腊字母的表达方式是\字母名称，比如说 
+			<ul>
+				<li>$\alpha$: $\text{\alpha}$ </li>
+				<li>$\beta$: $\text{\beta}$   </li> 
+				<li>$\gamma$: $\text{\gamma}$ </li>
+				<li>$\sigma$: $\text{\sigma}$ </li>
+			</ul>
+			如果你想要大写的某个希腊字母，只需要把指令中的首字母大写，比如说 
+			<ul>
+				<li>$\Sigma$: $\text{\Sigma}$ </li>
+				<li>$\Gamma$: $\text{\Gamma}$ </li>
+			</ul>
+		</li>
+
+		<li>
+			<h3>特殊符号</h3>
+			注意上下标的内容是在{}里面。读者可以试一下如果忘记括号输出的是什么结果。 
+			<ul>
+				<li>$\neq$: $\text{\neq}$ </li>
+				<li>$\geq$: $\text{\geq}$ </li>
+				<li>$\leq$: $\text{\leq}$ </li>
+				<li>$\approx$: $\text{\approx}$</li>
+				<li>$\equiv$: $\text{\equiv}$</li>
+				<li>$\int$: $\text{\int}$ </li> 
+				<li>$\partial $: $\text{\partial}$</li>
+				<li>$\mathcal{N}$: $\text{\mathcal{N}}$</li>
+				<li>$\sim $: $\text{\sim}$</li>
+				<li>$4^{12}$: $\text{4^{12}}$ </li>
+				<li>$C_{60}$: $\text{C_{60}}$</li>
+				<li>$\frac{1}{2}$: $\text{\frac{1}{2}}$</li> <br>
+			</ul>
+		</li>
+
+		<li>
+			<h3>矩阵</h3>
+			矩阵需要使用package amsmath, 参考以下例子 <br>
+<pre class="prettyprint">
+\begin{documentclass}
+<span>\usepackage{amsmath} </span>
+\begin{document}
+<span>
+$$
+\begin{bmatrix}
+0 & 0 & 1 \\ 
+1 & 0 & 0 \\ 
+\end{bmatrix}
+
+\begin{pmatrix}
+1 & 4 & 0 \\ 
+2 & 5 & 8 \\
+\end{pmatrix}
+
+\begin{vmatrix}
+1 & 4 & 0 \\ 
+2 & 5 & 8 \\
+\end{vmatrix}
+$$
+</span>
+\end{document}
+</pre>
+
+			<ul>
+				<li>& 是对齐</li>
+				<li>\\ 是新的一行</li>
+				<li> bmatrix的b是bracket，输出的是方括号的矩阵 </li>
+				<li> pmatrix的p是parentheses,输出的是圆括号的矩阵 </li> 
+				<li> vmatrix的v是vertical,输出的是竖线的矩阵 </li>
+			</ul>
+			输出结果： 
+$$
+\begin{bmatrix}
+0 & 0 & 1 \\ 
+1 & 0 & 0 \\ 
+\end{bmatrix}
+
+\begin{pmatrix}
+1 & 4 & 0 \\ 
+2 & 5 & 8 \\
+\end{pmatrix}
+
+\begin{vmatrix}
+1 & 4 & 0 \\ 
+2 & 5 & 8 \\
+\end{vmatrix}
+$$
+
+		</li>
+
+		<li><h3>公式对齐</h3></li>
+		如果你想写多行公式，如何对齐才好看呢？请参考以下的例子，同样使用了package amsmath。 
+<pre class="prettyprint">
+\documentclass{article}
+<span>
+\usepackage amsmath 
+</span>
+\begin{document}
+<span>
+\begin{align}
+53(4+x)+2x &= 212 + 53x + 2x \\ 
+&= 212 + 55x  
+\end{align}
+</span>
+\end{document}
+</pre>
+注意这里没有用到数学环境。
+输出结果： 
+\begin{align}
+53(4+x)+2x &= 212 + 53x + 2x \\ 
+&= 212 + 55x  
+\end{align}
+	</ul>
+	</div>
+
+	<hr>
+	<div id="nav_tag"> <a href="#">回到页面顶端 ↑</a></div>
+
+	<div id="pic">
+		<h2> 插图</h2>
+	如果想在文件中引入插图，需要先知道图片的位置和名称。
+<pre class="prettyprint">
+\documentclass{report}
+<span>\usepackage{graphicx}</span>
+\begin{document}
+<span>\includegraphics[scale=0.5]{tmp.png}</span>
+\end{document}
+</pre>
+	需要把例子中图片名称tmp.png换做是你的插图的名字，如果不在同一文件夹需要说明位置，scale是原图尺寸的百分比，也可以指定图的大小，把[scale=0.5]换成[width= cm, height= cm]空白处填入你想要的图片大小。 如果你需要为图片增加标题，那么需要放在figure的环境中，参考下面的例子。
+<pre class="prettyprint">
+\documentclass{report}
+\usepackage{graphicx}
+<span>\begin{figure}
+\includegraphics[scale=.5]{tmp.png}
+\caption{fig: tmp}
+\end{figure}
+</span>
+\end{document}
+</pre>
+	</div>
+	<hr>
+	<div id="nav_tag"> <a href="#">回到页面顶端 ↑</a></div>
+
+	<div id="site_help">
+		<h2> 声明及反馈 </h2>
+		该网站由Zilu原创并维护，转载请注明出处。 如果发现内容有误或有任何建议，请邮件<a href=mailto:ztian@wpi.edu>联系我</a>。 
+	</div>
+
+	<br>
+	<footer> June 11, 2017 </footer>
+</div>
+</body
+</html>
+
