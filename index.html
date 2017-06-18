@@ -17,13 +17,14 @@
 <div class="menu-wrap">
     <nav class="menu">
         <ul class="clearfix">
-            <li><a href="#installation"> 使用方法 </a></li>
+            <li><a href="#installation"> 安装 </a></li>
             <li><a href="#basics"> 教程<span class="arrow">&#9660;</span></a>
                 <ul class="sub-menu">
                     <li><a href="#basics">文档基础知识</a></li>
                     <li><a href="#list_table">列举和表格</a></li>
                     <li><a href="#equations">符号和公式</a></li>
                     <li><a href="#pic">插图</a></li>
+                    <li><a href="#other_links">参考资料</a></li>
                 </ul>
             </li>
             <li><a href="#site_help"> 声明及反馈 </a></li>
@@ -33,11 +34,11 @@
 <br>
 <div id="container">
 	<h1 align="center"> $\LaTeX$ 教程 </h1>
-	<div id="installation">	<h2> 使用方法</h2>
+	<div id="installation">	<h2> 安装</h2>
 	对于这个教程，建议大家自己练习一下，适当地修改例子，看不同的指令产生的影响，在线（推荐）或者离线。
 	<ul>
 	<li> <h2> 在线使用 </h2>
-		在线练习$\LaTeX$十分方便，很多包都已经装好了。 推荐下面两个网站，个人使用是免费的： <br>
+		在线练习$\LaTeX$十分方便，很多包都已经装好了，不需要下载安装任何软件。 推荐下面两个网站，个人使用是免费的： <br>
 		<ul> 
 		<li> <a href="https://www.overleaf.com" target="_blank"> www.overleaf.com </a> </li>
 		<li> <a href="https://www.sharelatex.com" target="_blank"> www.sharelatex.com </a> </li>
@@ -48,11 +49,11 @@
 		如果你想在个人电脑离线时使用，请参考如下安装步骤。 <br>
 		<ul>
 			<li><h3>Windows</h3>
-				下载 <a href="https://miktex.org/Download" target="_blank">MikTex</a> 并完成安装。MikTex有一个自带的editor, TeXworks,可以选择使用个也可以下载别的editor。我个人比较喜欢 <a href="http://www.xm1math.net/texmaker/" target="_blank">TexMaker</a>.
+				下载 <a href="https://miktex.org/Download" target="_blank">MikTex</a> 并完成安装。MikTex有一个自带的editor, TeXworks,可以选择使用个也可以下载别的editor。我个人比较喜欢 <a href="http://www.xm1math.net/texmaker/" target="_blank">TexMaker</a>。
 			</li>
 
 			<li><h3>Mac</h3>
-				下载 <a href="https://miktex.org/Download" target="_blank">MikTex</a> 并完成安装。MikTex有一个自带的editor, TeXworks,可以选择使用个也可以下载别的editor。我个人比较喜欢 <a href="http://www.xm1math.net/texmaker/" target="_blank">TexMaker</a>.
+				请参考 <a href="https://www.tug.org/mactex/mactex-download.html" target="_blank">MacTex</a> 。
 			</li>
 
 			<li><h3>Ubuntu</h3> 
@@ -248,14 +249,15 @@ iter1 & iter2	\\
 	<ul>
 		<li>
 			<h3>希腊字母</h3>
-			希腊字母的表达方式是\字母名称，比如说 
+			希腊字母的表达方式是\字母名称，比如说 （输出结果：指令） 
 			<ul>
 				<li>$\alpha$: $\text{\alpha}$ </li>
 				<li>$\beta$: $\text{\beta}$   </li> 
 				<li>$\gamma$: $\text{\gamma}$ </li>
 				<li>$\sigma$: $\text{\sigma}$ </li>
+				<li>$\epsilon$: $\text{\epsilon}$ </li>
 			</ul>
-			如果你想要大写的某个希腊字母，只需要把指令中的首字母大写，比如说 
+			如果你想要大写的某个希腊字母，只需要把指令中的首字母大写，比如说
 			<ul>
 				<li>$\Sigma$: $\text{\Sigma}$ </li>
 				<li>$\Gamma$: $\text{\Gamma}$ </li>
@@ -263,7 +265,7 @@ iter1 & iter2	\\
 		</li>
 
 		<li>
-			<h3>特殊符号</h3>
+			<h3>数学符号</h3>
 			注意上下标的内容是在{}里面。读者可以试一下如果忘记括号输出的是什么结果。 
 			<ul>
 				<li>$\neq$: $\text{\neq}$ </li>
@@ -272,6 +274,8 @@ iter1 & iter2	\\
 				<li>$\approx$: $\text{\approx}$</li>
 				<li>$\equiv$: $\text{\equiv}$</li>
 				<li>$\int$: $\text{\int}$ </li> 
+				<li>$\forall$: $\text{\forall}$</li>
+				<li>$\exists$: $\text{\exists}$</li>
 				<li>$\partial $: $\text{\partial}$</li>
 				<li>$\mathcal{N}$: $\text{\mathcal{N}}$</li>
 				<li>$\sim $: $\text{\sim}$</li>
@@ -279,6 +283,31 @@ iter1 & iter2	\\
 				<li>$C_{60}$: $\text{C_{60}}$</li>
 				<li>$\frac{1}{2}$: $\text{\frac{1}{2}}$</li> <br>
 			</ul>
+		</li>
+
+		<li>常见表达式 
+		注意下面的几个例子都是在数学环境中，需要在 $\text{\[ \]}$之间。
+		<ul>
+		<li>求和 <br>
+		$\text{\sum_{i=0}^{10} i = 0 + 1 + 2 + \ldots + 10}$ $$\sum_{i=0}^{10} i = 0 + 1 + 2 + \ldots + 10 $$
+		</li>
+		<li>求乘积 <br>
+		$\text{\prod_{i=1}^5 i = 1 \times 2 \times 3 \times 4 \times 5}$
+		$$ \prod_{i=1}^5 i = 1 \times 2 \times 3 \times 4 \times 5 $$</li>
+		<li>求积分 <br> 
+		$\text{\int_{x=1}^{10}\frac{1}{x^2}}$ $$\int_{x=1}^{10}\frac{1}{x^2}$$</li>
+		<li>求导 <br>
+		$\text{\frac{d}{dy} y^2}$
+		$$ \frac{d}{dy} y^2 $$ </li>
+		<li>求极限 <br>
+		$\text{\lim_{n\to \infty} \frac{1}{n}}$
+		$$\lim_{n\to \infty} \frac{1}{n} $$</li>
+		<li>求余数 <br>
+		$\text{10 \equiv 1 \text{ (mod 3)}}$
+		$$ 10 \equiv 1 \text{ (mod 3)} $$</li>
+		<li>开根号 <br>$\text{\sqrt{\frac{a}{b+c}}(b+a)}$
+		$$ \sqrt{\frac{a}{b+c}}(b+a) $$</li>
+		</ul>	
 		</li>
 
 		<li>
@@ -389,13 +418,24 @@ $$
 	<hr>
 	<div id="nav_tag"> <a href="#">回到页面顶端 ↑</a></div>
 
+	<div id="other_links">
+		<h2>参考资料</h2>
+		这个教程的目的是让大家了解并熟悉最常用的一些$\LaTeX$指令，因此我筛选了一些内容。如果你对某方面感兴趣并想了解更多，以下是一些参考资料。
+		<ul>
+		<li>关于页面排版：<a href="http://www.ctex.org/documents/packages/layout/fancyhdr.pdf" target="_blank">http://www.ctex.org/documents/packages/layout/fancyhdr.pdf</a></li>
+		<li>关于列举：<a href="https://en.wikibooks.org/wiki/LaTeX/List_Structures" target="_blank">https://en.wikibooks.org/wiki/LaTeX/List_Structures</a></li>
+		<li>更多数学符号及公式：<a href="https://en.wikibooks.org/wiki/LaTeX/Mathematics" target="_blank">https://en.wikibooks.org/wiki/LaTeX/Mathematics</a></li>
+		<li>关于图片：<a href="https://en.wikibooks.org/wiki/LaTeX/Importing_Graphics" target="_blank">https://en.wikibooks.org/wiki/LaTeX/Importing_Graphics</a></li>
+		</ul>
+	</div>
+
 	<div id="site_help">
 		<h2> 声明及反馈 </h2>
 		该网站由Zilu原创并维护，转载请注明出处。 如果发现内容有误或有任何建议，请邮件<a href=mailto:ztian@wpi.edu>联系我</a>。 
 	</div>
 
 	<br>
-	<footer> June 11, 2017 </footer>
+	<footer> 最新更新：June 18, 2017 </footer>
 </div>
 </body
 </html>
