@@ -4,6 +4,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<title> LaTeX 教程</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="print.css">
 	<script type="text/x-mathjax-config">
 	  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
 	</script>
@@ -14,7 +15,7 @@
 
 <body>
 
-<div class="menu-wrap">
+<header>
     <nav class="menu">
         <ul class="clearfix">
             <li><a href="#installation"> 安装 </a></li>
@@ -30,11 +31,12 @@
             <li><a href="#site_help"> 声明及反馈 </a></li>
         </ul>
     </nav>
-</div>
+</header>
 <br>
-<div id="container">
+
+<main>
 	<h1 align="center"> $\LaTeX$ 教程 </h1>
-	<div id="installation">	<h2> 安装</h2>
+	<article id="installation">	<h2> 安装</h2>
 	对于这个教程，建议大家自己练习一下，适当地修改例子，看不同的指令产生的影响，在线（推荐）或者离线。
 	<ul>
 	<li> <h2> 在线使用 </h2>
@@ -63,15 +65,18 @@
 				<code> sudo apt-get install texmaker </code>
 			</li>
 		</ul>
+
+		<p>
 		首先你会注意到打开editor有很多compile的选项。对于TexMaker, 文件写好保存后对于这个教程里的大多数例子直接点击QuickBuild左边的小箭头就可以了，在右侧会看到生成的pdf文件。有几个例外我会特别注明的。对于TeXworks,这个教程里的所有例子都可以通过default的option，pdfLaTeX+MakeIndex+BibTex，编译并生成pdf文件。 注意文件写好后存的后缀是.tex，建议每一个.tex文件存在单独的文件夹，因为编译过程中会生成多个文件（.log, .aux, .out, .synctex.gz, .toc, etc）。作为初学者不需要了解每一个文件的作用，只需要知道.pdf是生成的最终文件。如果反复build，比如说写一点compile看有没有错然后继续，如果之前没有报错，是不需要删除原先产生的各种文件的，再一次build会自动生成新的文件把原先的覆盖掉。 但如果之前compile有错，更改了.tex文件之后建议把原先的各种文件删除再Build。
+		</p>
 	</li>
 	</ul>
-	</div>
+	</article>
 
 	<hr>
-	<div id="nav_tag"> <a href="#">回到页面顶端 ↑</a></div>
+	<nav_tag> <a href="#">回到页面顶端 ↑</a></nav_tag>
 
-	<div id="basics">
+	<article id="basics">
 		<h2> 文档基础知识 </h2>
 		作为第一份 $\LaTeX$ 文件, 我们希望输出 <br>
 		Hello World! <br>
@@ -117,13 +122,11 @@ But I don't want my section to be numbered.
 
 <pre class="prettyprint">
 \documentclass{report}
-
 \begin{document}
 <span>\title{First Document}
 \author{your name}
 \maketitle
 </span>
-
 % This will generate a table of contents
 <span>\tableofcontents</span>
 \section{Section 1}
@@ -141,9 +144,7 @@ But I don't want my section to be numbered.
 
 <pre class="prettyprint">
 \documentclass{report}
-
 <span>\usepackage{hyperref}</span>
-
 \begin{document}
 \title{First Document}
 \author{your name}
@@ -164,9 +165,7 @@ But I don't want my section to be numbered.
 
 <pre class="prettyprint">
 \documentclass{report}
-
 \usepackage{hyperref}
-
 \begin{document}
 \title{First Document}
 \author{your name}
@@ -185,17 +184,16 @@ But I don't want my section to be numbered.
 \end{document}
 </pre>
 		至此，你已经掌握了$\LaTeX$文件的基本要素了。
-	</div>
+	</article>
 
 	<hr>
-	<div id="nav_tag"> <a href="#">回到页面顶端 ↑</a></div>
+	<nav_tag> <a href="#">回到页面顶端 ↑</a></nav_tag>
 
-	<div id="list_table">
+	<article id="list_table">
 	<h2>列举和表格</h2>
 	在文档中我们常常会用到列举。请在你的编译器里输入下面的例子。
 	<pre class="prettyprint">
 \documentclass{report}
-
 \begin{document}
 <span>\begin{itemize}
 \item Item 1. 
@@ -207,7 +205,6 @@ But I don't want my section to be numbered.
 	</pre>
 
 	enumerate是另外一个常用的列举方法，当我们希望列举的项有编码时。 仅需要把上述代码中的itemize换做enumerate就可以了。 List还有很多用途，请参考 <a href="https://en.wikibooks.org/wiki/LaTeX/List_Structures" target="_blank"> list_structures </a>
-	</div>
 	
 <pre class="prettyprint">
 \documentclass{report}
@@ -237,10 +234,12 @@ iter1 & iter2	\\
 <li>\hline: 横线 </li>
 <li> {l l} 表格内的第一和第二列左对齐 </li>
 </ul>
-	<hr>
-	<div id="nav_tag"> <a href="#">回到页面顶端 ↑</a></div>
+	</article>
 
-	<div id="equations">
+	<hr>
+	<nav_tag> <a href="#">回到页面顶端 ↑</a></nav_tag>
+
+	<article id="equations">
 	<h2>符号和公式</h2>
 	数学公式, 希腊字母，以及特殊符号都需要在数学环境中使用。如果是在同一行，使用$\text{\$表达式\$}$。 如果是另起一行, 使用$\text{\[表达式\]}$ 或者 $\text{\$\$表达式\$\$}$。 <br>
 	同一行的公式：$\frac{1}{2}(3x+5)$ 还是同一行 <br>
@@ -388,12 +387,12 @@ $$
 &= 212 + 55x  
 \end{align}
 	</ul>
-	</div>
+	</article>
 
 	<hr>
-	<div id="nav_tag"> <a href="#">回到页面顶端 ↑</a></div>
+	<nav_tag> <a href="#">回到页面顶端 ↑</a></nav_tag>
 
-	<div id="pic">
+	<article id="pic">
 		<h2> 插图</h2>
 	如果想在文件中引入插图，需要先知道图片的位置和名称。
 <pre class="prettyprint">
@@ -416,7 +415,7 @@ $$
 </pre>
 	</div>
 	<hr>
-	<div id="nav_tag"> <a href="#">回到页面顶端 ↑</a></div>
+	<nav_tag> <a href="#">回到页面顶端 ↑</a></nav_tag>
 
 	<div id="other_links">
 		<h2>参考资料</h2>
@@ -427,16 +426,15 @@ $$
 		<li>更多数学符号及公式：<a href="https://en.wikibooks.org/wiki/LaTeX/Mathematics" target="_blank">https://en.wikibooks.org/wiki/LaTeX/Mathematics</a></li>
 		<li>关于图片：<a href="https://en.wikibooks.org/wiki/LaTeX/Importing_Graphics" target="_blank">https://en.wikibooks.org/wiki/LaTeX/Importing_Graphics</a></li>
 		</ul>
-	</div>
+	</article>
 
-	<div id="site_help">
+	<hr>
+	<footer id="site_help">
 		<h2> 声明及反馈 </h2>
 		该网站由Zilu原创并维护，转载请注明出处。 如果发现内容有误或有任何建议，请邮件<a href=mailto:ztian@wpi.edu>联系我</a>。 
-	</div>
+	</footer>
 
-	<br>
-	<footer> 最新更新：June 18, 2017 </footer>
-</div>
-</body
+</main>
+</body>
 </html>
 

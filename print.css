@@ -1,0 +1,28 @@
+@media print{
+    body{
+        background-size:100%;
+        background-color:#ffffff;
+    }
+}
+
+@media print{
+    header{
+        display:none;
+    }
+}
+
+@media print{
+    pre {
+    	width: 75%;
+    	margin: auto;
+    	padding: 5px;
+    	overflow-y:hidden;
+    	overflow-x:hidden;
+    }
+}
+
+@media print{
+    nav_tag{
+        display:none;
+    }
+}
